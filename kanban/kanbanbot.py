@@ -18,6 +18,7 @@
 import logging
 import re
 import json
+import os
 
 from telegram.ext import Updater
 from telegram.ext import CommandHandler
@@ -40,7 +41,7 @@ class KanbanBot(object):
 
         # Load config
         self.logger.info("Reading config: <config.json>")
-        with open("config.json", "r") as f:
+        with open(os.path.join(os.path.dirname(__file__),"config.json"), "r") as f:
             config = json.loads(f.read())
 
         # Create the EventHandler and pass it the bot's token.
