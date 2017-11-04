@@ -13,6 +13,7 @@
 
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+"""This module contains the base object that setups the Kanban Bot."""
 
 import logging
 import re
@@ -39,7 +40,7 @@ class KanbanBot(object):
 
         # Load config
         self.logger.info("Reading config: <config.json>")
-        with open("config.json","r") as f:
+        with open("config.json", "r") as f:
             config = json.loads(f.read())
 
         # Create the EventHandler and pass it the bot's token.
@@ -56,13 +57,13 @@ class KanbanBot(object):
 
     def log_error(self, bot, update, error):
         """ Log any errors on the default logger """
-        self.logger.warn('Update "%s" caused error "%s"' % (update, error))
+        self.logger.error('Update "%s" caused error "%s"' % (update, error))
 
     def start(self, bot, update):
         """ Display greeting message and bot commands """
-        reply = ("Welcome to the Kanban bot.\n"
+        reply = ("Welcome to the Personal Kanban bot.\n"
                  "I'm still being built, but come back in a few days.\n")
-        
+
         update.message.reply_text(reply, quote=False)
 
     def start_polling(self):
